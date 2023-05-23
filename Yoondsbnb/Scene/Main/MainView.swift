@@ -14,11 +14,11 @@ struct MainView: View {
 			SearchBar()
 				.padding(.bottom, 10)
 			MainTopSlideBar()
+			MainImageView()
 			MainTabView()
 		}
 		.padding(.horizontal, 20)
 	}
-	
 }
 
 extension MainView {
@@ -93,6 +93,50 @@ extension MainView {
 					}
 					.foregroundColor(.gray)
 					.font(.subheadline)
+				}
+			}
+		}
+		
+	}
+	
+	struct MainImageView: View {
+		
+		@State var mainViews: [Image] = []
+		@State private var columns: [GridItem] = []// FIXME: 데이터 불러오기
+		
+		var body: some View {
+			VStack {
+				ScrollView(showsIndicators: false) {
+					LazyVGrid(columns: columns, alignment: .center, spacing: 10) {
+						
+					}
+					Image("travel")
+						.resizable()
+						.cornerRadius(15)
+						.overlay {
+							Image(systemName: "heart")
+								.padding(
+									.init(
+										top: 0,
+										leading: 300,
+										bottom: 100,
+										trailing: 0
+									)
+								)
+						}
+					HStack {
+						Text("밀라노, 이탈리아")
+							.font(.headline)
+						Spacer()
+					}
+					HStack {
+						Text("호스트: Valentine 님 - 인테리어 디자이너")
+						Spacer()
+					}
+					HStack {
+						Text("7월 24일 - 29일")
+						Spacer()
+					}
 				}
 			}
 		}

@@ -7,6 +7,6 @@
 
 import Foundation
 
-class MainViewModel {
-	
+class MainViewModel: ObservableObject {
+	@Published var mainViewImages: [URL] = [] // Image로 변경하기
 }
