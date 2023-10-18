@@ -9,12 +9,13 @@ import SwiftUI
 
 struct MainView: View {
 	
+	@ObservedObject var viewModel = MainViewModel()
+	
 	var body: some View {
 		VStack {
 			SearchBar()
-				.padding(.bottom, 10)
 			MainTopSlideBar()
-			MainImageView()
+			MainImageView(viewModel: viewModel)
 			MainTabView()
 		}
 		.padding(.horizontal, 20)
@@ -55,6 +56,7 @@ extension MainView {
 						radius: 15, x: 0, y: 0
 					)
 			)
+			.padding(.bottom, 10)
 		}
 		
 	}
@@ -93,6 +95,7 @@ extension MainView {
 					}
 					.foregroundColor(.gray)
 					.font(.subheadline)
+					Divider()
 				}
 			}
 		}
@@ -101,43 +104,27 @@ extension MainView {
 	
 	struct MainImageView: View {
 		
-		@State var mainViews: [Image] = []
-		@State private var columns: [GridItem] = []// FIXME: 데이터 불러오기
+		let viewModel: MainViewModel
 		
 		var body: some View {
 			VStack {
-				ScrollView(showsIndicators: false) {
-					LazyVGrid(columns: columns, alignment: .center, spacing: 10) {
-						
-					}
-					Image("travel")
-						.resizable()
-						.cornerRadius(15)
-						.overlay {
-							Image(systemName: "heart")
-								.padding(
-									.init(
-										top: 0,
-										leading: 300,
-										bottom: 100,
-										trailing: 0
-									)
-								)
+				List(viewModel.datas) { data in
+					VStack(spacing: 0) {
+						Image(systemName: data.image)
+							.resizable()
+							.cornerRadius(15)
+						HStack {
+							VStack {
+								Text(data.area)
+								Text(data.description)
+								Text(data.startDate + "~" + data.endDate)
+							}
+							Spacer()
+							Text("\(data.grade)")
 						}
-					HStack {
-						Text("밀라노, 이탈리아")
-							.font(.headline)
-						Spacer()
-					}
-					HStack {
-						Text("호스트: Valentine 님 - 인테리어 디자이너")
-						Spacer()
-					}
-					HStack {
-						Text("7월 24일 - 29일")
-						Spacer()
 					}
 				}
+				.listStyle(.plain)
 			}
 		}
 		
@@ -181,6 +168,6 @@ extension MainView {
 
 struct ContentView_Previews: PreviewProvider {
 	static var previews: some View {
-		MainView()
+		MainView(viewModel: MainViewModel())
 	}
 }
