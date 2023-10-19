@@ -10,26 +10,11 @@ import SwiftUI
 struct MainView: View {
 	
 	@ObservedObject var viewModel = MainViewModel()
+	@State var serachText: String = ""
+	@State var isSelectedSearchBar: Bool = false
 	
 	var body: some View {
 		VStack {
-			SearchBar()
-			MainTopSlideBar()
-			MainImageView(viewModel: viewModel)
-			MainTabView()
-		}
-		.padding(.horizontal, 20)
-	}
-}
-
-extension MainView {
-	
-	struct SearchBar: View {
-		
-		@State var serachText: String = ""
-		@State var isSelectedSearchBar: Bool = false
-		
-		var body: some View {
 			HStack {
 				Image(systemName: "magnifyingglass")
 				VStack(alignment: .leading, spacing: 0) {
@@ -57,13 +42,7 @@ extension MainView {
 					)
 			)
 			.padding(.bottom, 10)
-		}
-		
-	}
-	
-	struct MainTopSlideBar: View {
-		
-		var body: some View {
+			
 			GeometryReader { geometry in
 				ScrollView(.horizontal, showsIndicators: false) {
 					HStack(spacing: geometry.size.width / 20) {
@@ -98,15 +77,7 @@ extension MainView {
 					Divider()
 				}
 			}
-		}
-		
-	}
-	
-	struct MainImageView: View {
-		
-		let viewModel: MainViewModel
-		
-		var body: some View {
+			
 			VStack {
 				List(viewModel.datas) { data in
 					VStack(spacing: 0) {
@@ -126,13 +97,7 @@ extension MainView {
 				}
 				.listStyle(.plain)
 			}
-		}
-		
-	}
-	
-	struct MainTabView: View {
-		
-		var body: some View {
+			
 			TabView {
 				Text("Search Tab")
 					.tabItem {
@@ -161,9 +126,9 @@ extension MainView {
 					}
 			}
 		}
+		.padding(.horizontal, 20)
 		
 	}
-	
 }
 
 struct ContentView_Previews: PreviewProvider {
