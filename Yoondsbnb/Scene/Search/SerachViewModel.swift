@@ -20,9 +20,9 @@ class SerachViewModel: ObservableObject {
 	
 	// FIXME: 테스트를 위한 이미지 데이터 제거예정
 	@Published var mainImageDatas: [MainImageResponse] = [
-		MainImageResponse(image: "mainTest", area: "서울", description: "산 정원", startDate: "11월 12일", endDate: "12월 17일", price: 150000, grade: 4.89),
-		MainImageResponse(image: "mainTest", area: "서울", description: "산 정원", startDate: "11월 12일", endDate: "12월 17일", price: 150000, grade: 4.89),
-		MainImageResponse(image: "mainTest", area: "서울", description: "산 정원", startDate: "11월 12일", endDate: "12월 17일", price: 150000, grade: 4.89)
+        MainImageResponse(image: "mainTest", country: "한국", region: "서울", description: "산 정원", startDate: "12월 17일", endDate: "12월 25일", price: 150000, grade: 5.0),
+        MainImageResponse(image: "mainTest", country: "한국", region: "서울", description: "산 정원", startDate: "12월 17일", endDate: "12월 25일", price: 150000, grade: 4.3),
+        MainImageResponse(image: "mainTest", country: "한국", region: "서울", description: "산 정원", startDate: "12월 17일", endDate: "12월 25일", price: 150000, grade: 4.1)
 	]
 	
 }
