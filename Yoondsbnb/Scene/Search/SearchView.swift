@@ -21,6 +21,7 @@ struct SearchView: View {
                 VStack(alignment: .leading, spacing: 0) {
                     Text("어디로 여행가세요?")
                     TextField("어디든지 언제든 일주일 게스트 추가", text: $serachText)
+						.font(.subheadline)
                 }
                 Image(systemName: "slider.horizontal.3")
                     .padding(10)

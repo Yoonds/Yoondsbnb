@@ -1,5 +1,5 @@
 //
-//  MainTopSlideData.swift
+//  SearchTopSlideData.swift
 //  Yoondsbnb
 //
 //  Created by YoonDaeSung on 2023/10/19.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MainTopSlideData: Identifiable {
+struct SearchTopSlideResponse: Identifiable {
 	
 	var id = UUID()
 	var travelTitle: String

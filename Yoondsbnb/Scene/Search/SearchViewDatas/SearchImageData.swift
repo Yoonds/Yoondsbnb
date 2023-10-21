@@ -1,5 +1,5 @@
 //
-//  MainImageResponse.swift
+//  SearchImageData.swift
 //  Yoondsbnb
 //
 //  Created by YoonDaeSung on 2023/10/18.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MainImageResponse: Identifiable, Hashable {
+struct SearchImageResponse: Identifiable, Hashable {
 	
 	var id = UUID()
 	var image: String // FIXME: 이미지 배열로 받은 후 그리드 노출 필요
