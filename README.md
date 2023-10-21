@@ -13,10 +13,16 @@
   - 로그인 & 회원 가입 구현
   - 메시지 송수신 구현
   - 데이터 베이스 설계
-  - Git 형상관리 설정
 
 # 개발 환경
 - `Xcode` 14.3.1
 - `Swift` 5.6.1
 - `Database` 설계 전
 - `Server` 설계 전
+- `Version Control` GitHub
+
+# 버전 관리
+- Major.Minor.patch (0.0.0)
+  - `Major` 기존 버전 호환되지 않으며 버전 업데이트
+  - `Minor` 기존 버전 호환되면서 `새 기능` 업데이트
+  - `Patch` 기존 버전 호환되면서 버그 수정 업데이트
