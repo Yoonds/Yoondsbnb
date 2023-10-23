@@ -13,6 +13,7 @@ struct SearchView: View {
     
     @State var serachText: String = ""
     @State var isSelectedSearchBar: Bool = false
+	@State var selectedCell: UUID = UUID()
     
     var body: some View {
         VStack(spacing: 0) {
@@ -52,15 +53,23 @@ struct SearchView: View {
                             Image(systemName: data.iconName)
                             Text(data.travelTitle)
                                 .font(.system(size: 13))
+							// border이 아닌 얇은 선
+//								.border(selectedCell == data.id ? Color.black : Color.clear)
+//								.onTapGesture {
+//									selectedCell = data.id
+//								}
                         }
                     }
                 }
                 .frame(height: 40)
             }
-            .padding(.bottom, 7)
-            
+            .padding(.bottom, 10)
+			Rectangle()
+				.frame(height: 2)
+			Divider()
+				.padding(.top, 2)
+				.padding(.bottom, 10)
             Spacer()
-            
             ScrollView(.vertical, showsIndicators: false) {
                 ForEach(viewModel.mainImageDatas) { data in
                     VStack(spacing: 0) {
@@ -114,6 +123,6 @@ struct SearchView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchView(viewModel: SerachViewModel())
+		SearchView(viewModel: SerachViewModel())
     }
 }
