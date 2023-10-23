@@ -24,7 +24,7 @@ struct YoondsbnbApp: App {
 					.tabItem {
 						Label("여행", systemImage: "paperplane")
 					}
-				MessageView()
+				MessageBoxView()
 					.tabItem {
 						Label("메시지", systemImage: "message")
 					}
