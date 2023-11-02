@@ -39,19 +39,17 @@ struct ProfileListItem: View {
 		Button {
 			print("페이지 이동")
 		} label: {
-			VStack(spacing: 0) {
-				HStack(spacing: 15) {
+			VStack(alignment: .leading, spacing: 0) {
+				HStack(spacing: 0) {
 					Image(systemName: imageName)
+						.frame(width: 35, alignment: .leading)
 					Text(title)
 					Spacer()
 					Image(systemName: "chevron.right")
 				}
-//				Text(description)
-//				.font(.subheadline)
-//				.foregroundColor(.gray)
 				Divider()
 					.padding(.vertical, 12)
-
+				
 			}
 		}
 		.buttonStyle(.plain)
