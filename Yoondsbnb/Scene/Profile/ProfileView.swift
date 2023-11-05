@@ -135,7 +135,7 @@ struct ProfileView: View {
 					}
 				}
 				Text("로그아웃")
-					.underline(true)
+					.underline()
 					.padding(.vertical, 40)
 				Text("버전 23.43.1")
 					.font(.footnote)

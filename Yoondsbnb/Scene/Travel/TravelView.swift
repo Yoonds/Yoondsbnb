@@ -39,7 +39,7 @@ struct TravelView: View {
 			HStack {
 				Text("에약 내역을 찾으실 수 없나요?")
 				Text("도움말 센터 방문하기")
-					.underline(true)
+					.underline()
 			}
 			.font(.system(size: 14))
 			Spacer()

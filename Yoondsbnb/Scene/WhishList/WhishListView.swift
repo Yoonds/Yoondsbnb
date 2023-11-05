@@ -23,7 +23,7 @@ struct WhishListView: View {
 					Spacer()
 					Text(viewModel.isEditing ? "수정" : "완료")
 						.font(.headline)
-						.underline(true)
+						.underline()
 				}
 			}
 			VStack(alignment: .leading) {
