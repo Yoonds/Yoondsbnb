@@ -19,35 +19,7 @@ struct SearchView: View {
 				DestinationSearchView(show: $showDestinationSearchView)
 			} else {
 				VStack(spacing: 0) {
-//					SearchAndFilterBar()
-//						.onTapGesture {
-//							withAnimation {
-//								showDestinationSearchView.toggle()
-//							}
-//						}
-//					ScrollView(.horizontal, showsIndicators: true) {
-//						LazyHGrid(rows: [GridItem(.flexible(minimum: 5))], alignment: .bottom, spacing: 10) {
-//							ForEach(viewModel.mainSlideDatas) { data in
-//								VStack(alignment: .center, spacing: 3) {
-//									Image(systemName: data.iconName)
-//										.frame(height: 400)
-//									Text(data.travelTitle)
-//										.font(.system(size: 13))
-//								}
-//							}
-//						}
-//						.frame(height: 40)
-//					}
-//					.padding(.bottom, 10)
-//					Rectangle()
-//						.frame(height: 2)
-//					Divider()
-//						.padding(.top, 2)
-//						.padding(.bottom, 10)
-//					Spacer()
-					
 					ExploreView()
-					
 				}
 				.preferredColorScheme(.light)
 				.navigationBarTitleDisplayMode(.inline)
