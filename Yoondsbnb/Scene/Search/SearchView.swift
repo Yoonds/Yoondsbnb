@@ -13,18 +13,18 @@ struct SearchView: View {
     
     @State var serachText: String = ""
 	@State var showDestinationSearchView: Bool = false
-	
+    
     var body: some View {
-			if showDestinationSearchView {
-				DestinationSearchView(show: $showDestinationSearchView)
-			} else {
-				VStack(spacing: 0) {
-					ExploreView()
-				}
-				.preferredColorScheme(.light)
-				.navigationBarTitleDisplayMode(.inline)
-				.padding(.horizontal, 25)
-			}
+        if showDestinationSearchView {
+            DestinationSearchView(show: $showDestinationSearchView)
+        } else {
+            VStack(spacing: 0) {
+                ExploreView()
+            }
+            .preferredColorScheme(.light)
+            .navigationBarTitleDisplayMode(.inline)
+            .padding(.horizontal, 25)
+        }
     }
 }
 
