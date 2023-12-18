@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ListingItem: View {
+struct ListingItemView: View {
 	
 	var body: some View {
 		VStack(spacing: 8) {
@@ -45,6 +45,6 @@ struct ListingItem: View {
 
 struct ListingItem_Previews: PreviewProvider {
 	static var previews: some View {
-		ListingItem()
+		ListingItemView()
 	}
 }
