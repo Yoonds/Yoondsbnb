@@ -21,7 +21,7 @@
 - `Server` 설계 전
 - `Version Control` GitHub
 
-# 버전 관리
+# 버전 관리(출시 후 예정)
 - Major.Minor.patch (0.0.0)
   - `Major` 기존 버전 호환되지 않으며 버전 업데이트
   - `Minor` 기존 버전 호환되면서 `새 기능` 업데이트
