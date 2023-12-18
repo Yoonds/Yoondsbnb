@@ -12,11 +12,11 @@ struct SearchView: View {
     @ObservedObject var viewModel = SerachViewModel()
     
     @State var serachText: String = ""
-	@State var showDestinationSearchView: Bool = false
+	@State var isShowDestinationSearchView: Bool = false
     
     var body: some View {
-        if showDestinationSearchView {
-            DestinationSearchView(show: $showDestinationSearchView)
+        if isShowDestinationSearchView {
+//            DestinationSearchView(show: $showDestinationSearchView)
         } else {
             VStack(spacing: 0) {
                 ExploreView()

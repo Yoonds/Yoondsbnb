@@ -8,12 +8,21 @@
 import SwiftUI
 
 struct ExploreView: View {
+    
+    @State private var isShowDestinationSearchView: Bool = false
+    
     var body: some View {
         NavigationStack {
-            VStack {
-                SearchAndFilterBar()
-                
+            if isShowDestinationSearchView {
+                DestinationSearchView(isShow: $isShowDestinationSearchView)
+            } else {
                 ScrollView(showsIndicators: false) {
+                    SearchAndFilterBar()
+                        .onTapGesture {
+                            withAnimation(.linear) {
+                                isShowDestinationSearchView.toggle()
+                            }
+                        }
                     LazyVStack(spacing: 32) {
                         ForEach( 0 ... 10, id: \.self) { listing in
                             ListingItemView()
