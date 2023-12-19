@@ -130,8 +130,9 @@ struct DestinationSearchView: View {
                 }
             }
             .padding(.horizontal)
-            
         }
+        .background(.white)
+        .opacity(0.97)
     }
 }
 
