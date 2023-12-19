@@ -40,6 +40,7 @@ struct ListingItemView: View {
 				.foregroundColor(.black)
 			}
 		}
+        .padding(.horizontal)
 	}
 }
 

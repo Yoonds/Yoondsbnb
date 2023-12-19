@@ -33,7 +33,7 @@ struct DestinationSearchView: View {
                 }
                 Spacer()
             }
-            .padding(.leading, 16)
+            .padding(.horizontal, 16)
             
             VStack(alignment: .leading) {
                 Text("여행지를 알려주세요")
@@ -74,7 +74,7 @@ struct DestinationSearchView: View {
             }
             .padding()
             .background(.white)
-            .clipShape(RoundedRectangle(cornerRadius: 12))
+            .clipShape(RoundedRectangle(cornerRadius: 16))
             .shadow(radius: 10)
             .padding(.horizontal)
             
@@ -107,6 +107,30 @@ struct DestinationSearchView: View {
             .padding(.horizontal)
             
             Spacer()
+            
+            HStack(spacing: 0) {
+                Text("전체 삭제")
+                    .underline()
+                Spacer()
+                Button {
+                    print("검색") // TODO: 검색기능 추가
+                } label: {
+                    HStack(spacing: 7) {
+                        Image(systemName: "magnifyingglass")
+                            .imageScale(.medium)
+                        Text("검색")
+                    }
+                    .padding(
+                        EdgeInsets
+                            .init(top: 10, leading: 12, bottom: 10, trailing: 15)
+                    )
+                    .background(.red)
+                    .foregroundColor(.white)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                }
+            }
+            .padding(.horizontal)
+            
         }
     }
 }

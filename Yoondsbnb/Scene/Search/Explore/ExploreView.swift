@@ -18,6 +18,7 @@ struct ExploreView: View {
             } else {
                 ScrollView(showsIndicators: false) {
                     SearchAndFilterBar()
+                        .padding(.horizontal)
                         .onTapGesture {
                             withAnimation(.linear) {
                                 isShowDestinationSearchView.toggle()
