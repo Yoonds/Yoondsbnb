@@ -23,7 +23,6 @@ struct SearchView: View {
             }
             .preferredColorScheme(.light)
             .navigationBarTitleDisplayMode(.inline)
-            .padding(.horizontal, 25)
         }
     }
 }
