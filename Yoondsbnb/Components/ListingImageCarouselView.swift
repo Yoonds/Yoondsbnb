@@ -25,7 +25,7 @@ struct ListingImageCarouselView: View {
 			}
 		}
 		.frame(height: 320)
-//		.clipShape(RoundedRectangle(cornerRadius: 10))
+		.clipShape(RoundedRectangle(cornerRadius: 13))
 		.tabViewStyle(.page)
     }
 }
