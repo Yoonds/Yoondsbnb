@@ -131,6 +131,7 @@ struct DestinationSearchView: View {
             }
             .padding(.horizontal)
         }
+        .toolbar(.hidden, for: .tabBar)
         .background(.white)
         .opacity(0.97)
     }
