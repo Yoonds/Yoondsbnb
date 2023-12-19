@@ -9,21 +9,21 @@ import SwiftUI
 
 struct ProfileListItem: View {
 	
-	// TODO: 외부에서 주입할 경우 Kind로 구분하도록 변경
-	enum ListItemKind: String, CustomStringConvertible {
-		
-		case privacy
-		case payment
-		
-		var description: String {
-			switch self {
-			case .privacy:
-				return("개안정보")
-			case .payment:
-				return("개안정보2")
-			}
-		}
-	}
+//	// TODO: 외부에서 주입할 경우 Kind로 구분하도록 변경
+//	enum ListItemKind: String, CustomStringConvertible {
+//		
+//		case privacy
+//		case payment
+//		
+//		var description: String {
+//			switch self {
+//			case .privacy:
+//				return("개안정보")
+//			case .payment:
+//				return("개안정보2")
+//			}
+//		}
+//	}
 	
 	let imageName: String
 	let title: String
