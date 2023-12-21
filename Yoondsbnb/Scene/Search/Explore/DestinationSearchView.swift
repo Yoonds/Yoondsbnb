@@ -78,33 +78,8 @@ struct DestinationSearchView: View {
             .shadow(radius: 10)
             .padding(.horizontal)
             
-            HStack(spacing: 0) {
-                Text("날짜")
-                    .font(.caption)
-                    .foregroundColor(Color.gray)
-                Spacer()
-                Text("일주일")
-                    .font(.caption)
-            }
-            .padding(17)
-            .background(.white)
-            .clipShape(RoundedRectangle(cornerRadius: 12))
-            .shadow(radius: 10)
-            .padding(.horizontal)
-            
-            HStack(spacing: 0) {
-                Text("여행자")
-                    .font(.caption)
-                    .foregroundColor(Color.gray)
-                Spacer()
-                Text("게스트 추가")
-                    .font(.caption)
-            }
-            .padding(17)
-            .background(.white)
-            .clipShape(RoundedRectangle(cornerRadius: 12))
-            .shadow(radius: 10)
-            .padding(.horizontal)
+            CollapsedPickerView(title: "날짜", description: "일주일")
+            CollapsedPickerView(title: "여행자", description: "게스트 추가")
             
             Spacer()
             
@@ -140,6 +115,34 @@ struct DestinationSearchView: View {
         .opacity(0.97)
     }
 }
+
+private extension DestinationSearchView {
+    
+    struct CollapsedPickerView: View {
+        
+        let title: String
+        let description: String
+        
+        var body: some View {
+            HStack(spacing: 0) {
+                Text(title)
+                    .font(.caption)
+                    .foregroundColor(Color.gray)
+                Spacer()
+                Text(description)
+                    .font(.caption)
+            }
+            .padding(17)
+            .background(.white)
+            .clipShape(RoundedRectangle(cornerRadius: 12))
+            .shadow(radius: 10)
+            .padding(.horizontal)
+        }
+        
+    }
+    
+}
+
 
 struct DestinationSearchView_Previews: PreviewProvider {
     static var previews: some View {
