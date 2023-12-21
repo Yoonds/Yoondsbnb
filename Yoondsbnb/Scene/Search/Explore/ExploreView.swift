@@ -12,18 +12,16 @@ struct ExploreView: View {
     @State private var isShowDestinationSearchView: Bool = false
     
     var body: some View {
-        NavigationStack {
-            if isShowDestinationSearchView {
-                DestinationSearchView(isShow: $isShowDestinationSearchView)
-            } else {
-                ScrollView(showsIndicators: false) {
-                    SearchAndFilterBar()
-                        .padding(.horizontal)
-                        .onTapGesture {
-                            withAnimation(.linear) {
-                                isShowDestinationSearchView.toggle()
-                            }
+        ZStack {
+            VStack(spacing: 0) {
+                SearchAndFilterBar()
+                    .padding(.horizontal)
+                    .onTapGesture {
+                        withAnimation(.linear) {
+                            isShowDestinationSearchView.toggle()
                         }
+                    }
+                ScrollView(showsIndicators: false) {
                     LazyVStack(spacing: 32) {
                         ForEach( 0 ... 10, id: \.self) { listing in
                             ListingItemView()
@@ -32,6 +30,9 @@ struct ExploreView: View {
                         }
                     }
                 }
+            }
+            if isShowDestinationSearchView {
+                DestinationSearchView(isShow:  $isShowDestinationSearchView)
             }
         }
     }

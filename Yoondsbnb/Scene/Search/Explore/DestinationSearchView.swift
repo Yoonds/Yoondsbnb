@@ -108,6 +108,7 @@ struct DestinationSearchView: View {
             
             Spacer()
             
+            Divider()
             HStack(spacing: 0) {
                 Text("전체 삭제")
                     .underline()
@@ -129,9 +130,14 @@ struct DestinationSearchView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 10))
                 }
             }
-            .padding(.horizontal)
-            
+            .padding(EdgeInsets
+                .init(top: 0, leading: 20, bottom: 10, trailing: 20)
+            )
+            .background(.white)
         }
+        .toolbar(.hidden, for: .tabBar)
+        .background(.white)
+        .opacity(0.97)
     }
 }
 
