@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6B003C6A2B46EE0600BBA931 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 6B003C692B46EE0600BBA931 /* .gitignore */; };
 		6B0AC56A29F6BFE3006C5F72 /* SerachViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0AC56929F6BFE3006C5F72 /* SerachViewModel.swift */; };
 		6B34E8E12AE6B48000560EA7 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B34E8E02AE6B48000560EA7 /* MessageView.swift */; };
 		6B34E8E32AE6B4A200560EA7 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B34E8E22AE6B4A200560EA7 /* NotificationView.swift */; };
@@ -34,6 +35,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6B003C692B46EE0600BBA931 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		6B0AC56929F6BFE3006C5F72 /* SerachViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerachViewModel.swift; sourceTree = "<group>"; };
 		6B34E8E02AE6B48000560EA7 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		6B34E8E22AE6B4A200560EA7 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				6B7496E529F5751F00FF7B4A /* YoondsbnbApp.swift */,
+				6B003C692B46EE0600BBA931 /* .gitignore */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B7496ED29F5752000FF7B4A /* Preview Assets.xcassets in Resources */,
+				6B003C6A2B46EE0600BBA931 /* .gitignore in Resources */,
 				6B7496EA29F5752000FF7B4A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
