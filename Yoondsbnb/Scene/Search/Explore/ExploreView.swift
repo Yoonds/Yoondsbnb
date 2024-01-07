@@ -32,7 +32,7 @@ struct ExploreView: View {
                 }
             }
             if isShowDestinationSearchView {
-                DestinationSearchView(isShow:  $isShowDestinationSearchView)
+                DestinationSearchView(isShowDestinationSearchView:  $isShowDestinationSearchView)
             }
         }
     }

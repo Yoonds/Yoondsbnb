@@ -19,24 +19,31 @@ fileprivate enum DestinationSearchOptions {
 
 struct DestinationSearchView: View {
     
-    @Binding var isShow: Bool
+    @Binding var isShowDestinationSearchView: Bool
     
+    @State private var isShowBottomSheet: Bool = false
     @State private var destination = ""
-    @State private var selectedOption: DestinationSearchOptions = .basic
+    @State private var selectedOption: DestinationSearchOptions = .basic {
+        didSet {
+            if selectedOption != .basic {
+                isShowBottomSheet.toggle()
+            }
+        }
+    }
     
     var body: some View {
         VStack(spacing: 16) {
             HStack(spacing: 0) {
                 Button {
-                    withAnimation(.easeIn) {
-                        isShow.toggle()
-                    }
+                    selectedOption == .basic
+                    ? isShowDestinationSearchView.toggle()
+                    : (selectedOption = .basic)
                 } label: {
                     Image(systemName: selectedOption == .basic
                           ? "xmark.circle"
                           : "arrowshape.backward.circle"
                     )
-                    .imageScale(.large)
+                    .imageScale(.medium)
                     .foregroundColor(.black)
                 }
                 .padding(.trailing, 110)
@@ -89,8 +96,6 @@ struct DestinationSearchView: View {
                         }
                     }
                     .padding(.bottom, 10)
-                } else if selectedOption == .location {
-                    LocationBottomSheet()
                 }
             }
             .padding()
@@ -102,8 +107,6 @@ struct DestinationSearchView: View {
             VStack(spacing: 0) {
                 if selectedOption == .basic {
                     CollapsedPickerView(title: "날짜", description: "일주일")
-                } else {
-                    DatesBottomSheet()
                 }
             }
             .onTapGesture {
@@ -113,8 +116,6 @@ struct DestinationSearchView: View {
             VStack(spacing: 0) {
                 if selectedOption == .basic {
                     CollapsedPickerView(title: "여행자", description: "게스트 추가")
-                } else if selectedOption == .guests {
-                    GuestsBottomSheet()
                 }
             }
             .onTapGesture {
@@ -152,6 +153,21 @@ struct DestinationSearchView: View {
         }
         .background(.white)
         .opacity(0.97)
+        .sheet(isPresented: $isShowBottomSheet) {
+            Group {
+                switch selectedOption {
+                case .location:
+                    LocationBottomSheet(destination: $destination)
+                case .dates:
+                    DatesBottomSheet()
+                case .guests:
+                    GuestsBottomSheet()
+                case .basic:
+                    EmptyView() // 변경 필요
+                }
+            }
+            .presentationDetents([.height(700)]) // FIXME: 비율로 화면 조율 하기
+        }
     }
 }
 
@@ -182,8 +198,10 @@ private extension DestinationSearchView {
     
     struct LocationBottomSheet: View {
         
+        @Binding var destination: String
+        
         var body: some View {
-            Text("여행 지바텀")
+            Text("목적지 뷰")
         }
         
     }
@@ -209,6 +227,6 @@ private extension DestinationSearchView {
 
 struct DestinationSearchView_Previews: PreviewProvider {
     static var previews: some View {
-        DestinationSearchView(isShow: .constant(false))
+        DestinationSearchView(isShowDestinationSearchView: .constant(false))
     }
 }
