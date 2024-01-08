@@ -61,26 +61,38 @@ struct DestinationSearchView: View {
                     Text("여행지를 알려주세요")
                         .font(.title2)
                         .fontWeight(.semibold)
-                    
-                    HStack {
-                        Image(systemName: "magnifyingglass")
-                            .imageScale(.small)
-                        TextField("여행지 검색", text: $destination)
-                            .font(.caption)
-                    }
-                    .frame(height: 44)
-                    .padding(.horizontal)
-                    .overlay {
-                        RoundedRectangle(cornerRadius: 8)
-                            .stroke(lineWidth: 1.0)
-                            .foregroundColor(Color(.systemGray4))
-                    }
-                    .onTapGesture {
+                }
+                
+                HStack {
+                    Image(systemName: "magnifyingglass")
+                        .imageScale(.small)
+                    TextField("여행지 검색", text: $destination)
+                        .font(.caption)
+                }
+                .frame(height: 44)
+                .padding(.horizontal)
+                .overlay {
+                    Color(selectedOption == .location ? .systemGray2 : .clear)
+                    RoundedRectangle(cornerRadius: 8)
+                        .foregroundColor(
+                            Color(selectedOption == .location
+                                  ? .systemGray6
+                                  : .clear
+                                 )
+                        )
+                }
+                .onTapGesture {
+                    withAnimation() {
                         selectedOption = .location
                     }
-                    .padding(.bottom, 15)
-                    
-                    // FIXME: 우측 패딩값을 덮어서 스크롤하도록 변경
+                }
+                .padding(.bottom, 15)
+                
+                if selectedOption == .location {
+                    Spacer()
+                }
+                
+                if selectedOption == .basic {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 15) {
                             ForEach(1..<6) { continent in
@@ -102,7 +114,7 @@ struct DestinationSearchView: View {
             .background(.white)
             .clipShape(RoundedRectangle(cornerRadius: 16))
             .shadow(radius: 10)
-            .padding(.horizontal)
+            .padding(selectedOption == .location ? 0 : 17.0)
             
             VStack(spacing: 0) {
                 if selectedOption == .basic {
@@ -124,50 +136,36 @@ struct DestinationSearchView: View {
             
             Spacer()
             
-            Divider()
-            HStack(spacing: 0) {
-                Text("전체 삭제")
-                    .underline()
-                Spacer()
-                Button {
-                    print("검색") // TODO: 검색기능 추가
-                } label: {
-                    HStack(spacing: 7) {
-                        Image(systemName: "magnifyingglass")
-                            .imageScale(.medium)
-                        Text("검색")
+            if selectedOption == .basic {
+                Divider()
+                HStack(spacing: 0) {
+                    Text("전체 삭제")
+                        .underline()
+                    Spacer()
+                    Button {
+                        print("검색") // TODO: 검색기능 추가
+                    } label: {
+                        HStack(spacing: 7) {
+                            Image(systemName: "magnifyingglass")
+                                .imageScale(.medium)
+                            Text("검색")
+                        }
+                        .padding(
+                            EdgeInsets
+                                .init(top: 10, leading: 12, bottom: 10, trailing: 15)
+                        )
+                        .background(.red)
+                        .foregroundColor(.white)
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
                     }
-                    .padding(
-                        EdgeInsets
-                            .init(top: 10, leading: 12, bottom: 10, trailing: 15)
-                    )
-                    .background(.red)
-                    .foregroundColor(.white)
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
                 }
+                .padding(EdgeInsets
+                    .init(top: 0, leading: 20, bottom: 10, trailing: 20)
+                )
             }
-            .padding(EdgeInsets
-                .init(top: 0, leading: 20, bottom: 10, trailing: 20)
-            )
-            .background(.white)
         }
         .background(.white)
         .opacity(0.97)
-        .sheet(isPresented: $isShowBottomSheet) {
-            Group {
-                switch selectedOption {
-                case .location:
-                    LocationBottomSheet(destination: $destination)
-                case .dates:
-                    DatesBottomSheet()
-                case .guests:
-                    GuestsBottomSheet()
-                case .basic:
-                    EmptyView() // 변경 필요
-                }
-            }
-            .presentationDetents([.height(700)]) // FIXME: 비율로 화면 조율 하기
-        }
     }
 }
 
