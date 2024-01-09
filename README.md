@@ -15,8 +15,8 @@
   - 데이터 베이스 설계
 
 # 개발 환경
-- `Xcode` 14.3.1
-- `Swift` 5.6.1
+- `Xcode` 15.0.1
+- `Swift` 5.9
 - `Database` 설계 전
 - `Server` 설계 전
 - `Version Control` GitHub
