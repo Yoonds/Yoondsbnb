@@ -22,17 +22,11 @@ struct DestinationSearchView: View {
     @Binding var isShowDestinationSearchView: Bool
     
     @State private var isShowBottomSheet: Bool = false
+    @State private var selectedOption: DestinationSearchOptions = .basic
     @State private var destination = ""
-    @State private var selectedOption: DestinationSearchOptions = .basic {
-        didSet {
-            if selectedOption != .basic {
-                isShowBottomSheet.toggle()
-            }
-        }
-    }
-    
+
     var body: some View {
-        VStack(spacing: 16) {
+        VStack(spacing: 0) {
             HStack(spacing: 0) {
                 Button {
                     selectedOption == .basic
@@ -46,71 +40,104 @@ struct DestinationSearchView: View {
                     .imageScale(.medium)
                     .foregroundColor(.black)
                 }
-                .padding(.trailing, 110)
-                
+                Spacer()
                 HStack(spacing: 15) {
                     Text("숙소")
                     Text("체험")
                 }
                 Spacer()
             }
-            .padding(.horizontal, 16)
+            .padding(
+                EdgeInsets(
+                    top: 15,
+                    leading: 20,
+                    bottom: 15,
+                    trailing: 40
+                )
+            )
             
             VStack(alignment: .leading) {
-                if selectedOption == .basic {
-                    Text("여행지를 알려주세요")
-                        .font(.title2)
-                        .fontWeight(.semibold)
-                }
-                
-                HStack {
-                    Image(systemName: "magnifyingglass")
-                        .imageScale(.small)
-                    TextField("여행지 검색", text: $destination)
-                        .font(.caption)
-                }
-                .frame(height: 44)
-                .padding(.horizontal)
-                .overlay {
-                    Color(selectedOption == .location ? .systemGray2 : .clear)
-                    RoundedRectangle(cornerRadius: 8)
-                        .foregroundColor(
-                            Color(selectedOption == .location
-                                  ? .systemGray6
-                                  : .clear
-                                 )
-                        )
-                }
-                .onTapGesture {
-                    withAnimation() {
-                        selectedOption = .location
+                VStack(spacing: 0) {
+                    HStack(spacing: 0) {
+                        if selectedOption == .basic {
+                            Text("여행지를 알려주세요")
+                                .font(.title2)
+                                .fontWeight(.semibold)
+                        }
+                        Spacer()
+                    }
+                    .padding(.bottom, 15)
+                    
+                    VStack(spacing: 0) {
+                        RoundedRectangle(cornerRadius: 8)
+                            .fill(
+                                selectedOption == .basic
+                                ? Color.clear
+                                : Color(.systemGray6)
+                            )
+                            .stroke(selectedOption == .basic
+                                    ? Color(.systemGray3)
+                                    : Color.clear
+                            )
+                            .overlay {
+                                HStack(spacing: 15) {
+                                    Image(systemName: "magnifyingglass")
+                                        .imageScale(.small)
+                                    TextField("", text: $destination, prompt: Text("여행지 검색")
+                                        .font(.caption)
+                                        .foregroundColor(Color(.systemGray))
+                                    )
+                                }
+                                .padding(15)
+                        }
+                    }
+                    .frame(height: 50)
+                    .onTapGesture {
+                        withAnimation() {
+                            selectedOption = .location
+                        }
                     }
                 }
-                .padding(.bottom, 15)
+                .padding(
+                    EdgeInsets(
+                        top: 20,
+                        leading: 20,
+                        bottom: 15,
+                        trailing: 20
+                    )
+                )
                 
-                if selectedOption == .location {
-                    Spacer()
-                }
-                
-                if selectedOption == .basic {
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 15) {
-                            ForEach(1..<6) { continent in
-                                VStack(alignment: .leading) {
-                                    Image("mainTest")
-                                        .resizable()
-                                        .frame(width: 130, height: 130)
-                                        .cornerRadius(8)
-                                    Text("유럽")
-                                        .font(.caption)
+                VStack(spacing: 0) {
+                    if selectedOption == .location {
+                        Spacer()
+                    }
+                    if selectedOption == .basic {
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack(spacing: 15) {
+                                ForEach(1..<6) { continent in
+                                    VStack(alignment: .leading) {
+                                        Image("mainTest")
+                                            .resizable()
+                                            .frame(width: 130, height: 130)
+                                            .cornerRadius(8)
+                                            .padding(.bottom, 10)
+                                        Text("유럽")
+                                            .font(.caption)
+                                    }
                                 }
                             }
                         }
                     }
-                    .padding(.bottom, 10)
                 }
+                .padding(
+                    EdgeInsets(
+                        top: 0,
+                        leading: 20,
+                        bottom: 20,
+                        trailing: 0
+                    )
+                )
             }
-            .padding()
             .background(.white)
             .clipShape(RoundedRectangle(cornerRadius: 16))
             .shadow(radius: 10)
@@ -121,8 +148,11 @@ struct DestinationSearchView: View {
                     CollapsedPickerView(title: "날짜", description: "일주일")
                 }
             }
+            .padding(.bottom, 20)
             .onTapGesture {
-                selectedOption = .dates
+                withAnimation {
+                    selectedOption = .dates
+                }
             }
                 
             VStack(spacing: 0) {
@@ -131,12 +161,13 @@ struct DestinationSearchView: View {
                 }
             }
             .onTapGesture {
-                selectedOption = .guests
+                withAnimation {
+                    selectedOption = .guests
+                }
             }
             
-            Spacer()
-            
             if selectedOption == .basic {
+                Spacer()
                 Divider()
                 HStack(spacing: 0) {
                     Text("전체 삭제")
@@ -159,11 +190,17 @@ struct DestinationSearchView: View {
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                     }
                 }
-                .padding(EdgeInsets
-                    .init(top: 0, leading: 20, bottom: 10, trailing: 20)
+                .padding(
+                    EdgeInsets(
+                        top: 20,
+                        leading: 20,
+                        bottom: 10,
+                        trailing: 20
+                    )
                 )
             }
         }
+        .toolbar(.hidden, for: .tabBar)
         .background(.white)
         .opacity(0.97)
     }
