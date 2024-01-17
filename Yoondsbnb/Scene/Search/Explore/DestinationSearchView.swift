@@ -206,7 +206,7 @@ struct DestinationSearchView: View {
                         EdgeInsets(
                             top: 20,
                             leading: 20,
-                            bottom: 10,
+                            bottom: 30,
                             trailing: 20
                         )
                     )
@@ -214,6 +214,9 @@ struct DestinationSearchView: View {
             }
         }
         .toolbar(.hidden, for: .tabBar)
+        .ignoresSafeArea(edges: .bottom)
+        .navigationBarHidden(true)
+        .background(.white)
     }
 }
 
