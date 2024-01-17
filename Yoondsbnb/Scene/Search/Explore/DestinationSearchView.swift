@@ -25,14 +25,19 @@ struct DestinationSearchView: View {
     @State private var selectedOption: DestinationSearchOptions = .basic
     @State private var destination = ""
     
+    @FocusState private var isShowKeyboardField: Bool
+    
     var body: some View {
         VStack(spacing: 0) {
             VStack(spacing: 0) {
                 HStack(spacing: 0) {
                     Button {
-                        selectedOption == .basic
-                        ? isShowDestinationSearchView.toggle()
-                        : (selectedOption = .basic)
+                        withAnimation {
+                            selectedOption == .basic
+                            ? isShowDestinationSearchView.toggle()
+                            : (selectedOption = .basic)
+                        }
+                        isShowKeyboardField = false
                     } label: {
                         Image(systemName: selectedOption == .basic
                               ? "xmark.circle"
@@ -88,6 +93,8 @@ struct DestinationSearchView: View {
                                     .font(.caption)
                                     .foregroundColor(Color(.systemGray))
                                 )
+                                .keyboardType(.default)
+                                .focused($isShowKeyboardField)
                             }
                             .padding(15)
                         }
