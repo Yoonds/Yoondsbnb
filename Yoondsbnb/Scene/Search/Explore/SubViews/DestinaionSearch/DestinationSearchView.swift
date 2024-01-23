@@ -118,8 +118,36 @@ struct DestinationSearchView: View {
             
             if selectedOption == .dates {
                 VStack(spacing: 0) {
-                    Text("달력 뷰")
+                        VStack(spacing: 0) {
+                            HStack(spacing: 0) {
+                                Text("언제 여행 가실 예정인가요?")
+                                    .font(.title2)
+                                    .fontWeight(.semibold)
+                                Spacer()
+                            }
+                            .padding(.bottom, 15)
+                            
+                            HStack {
+                                Text("날짜 지정")
+                                Text("월 단위")
+                                Text("유연한 일정")
+                            }
+                        }
+                        .padding(.horizontal, 20)
+                        Text("캘릭더 뷰")
                 }
+                .padding(EdgeInsets(top: 25, leading: 0, bottom: 15, trailing: 0))
+                .background(.white)
+                .clipShape(RoundedRectangle(cornerRadius: 20))
+                .shadow(radius: 5)
+                .padding(
+                    EdgeInsets(
+                        top: 0,
+                        leading: selectedOption == .location ? 15 : 20,
+                        bottom: 20,
+                        trailing: selectedOption == .location ? 15 : 20
+                    )
+                )
             } else {
                 CollapsedPickerView(title: "날짜", description: "일주일")
                     .padding(
@@ -136,7 +164,7 @@ struct DestinationSearchView: View {
             
             if selectedOption == .guests {
                 Text("여행자 뷰")
-            } else {
+            } else if selectedOption == .location {
                 CollapsedPickerView(title: "여행자", description: "게스트 추가")
                     .padding(.horizontal, 20)
                     .onTapGesture {
@@ -157,27 +185,6 @@ struct DestinationSearchView: View {
 }
 
 private extension DestinationSearchView {
-    
-    struct CollapsedPickerView: View {
-        
-        let title: String
-        let description: String
-        
-        var body: some View {
-            HStack(spacing: 0) {
-                Text(title)
-                    .foregroundColor(Color.gray)
-                Spacer()
-                Text(description)
-            }
-            .font(.subheadline)
-            .padding(25)
-            .background(.white)
-            .clipShape(RoundedRectangle(cornerRadius: 20))
-            .shadow(radius: 10)
-        }
-        
-    }
     
 }
 
