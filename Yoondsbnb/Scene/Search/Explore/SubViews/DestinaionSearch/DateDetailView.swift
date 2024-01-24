@@ -25,7 +25,6 @@ struct DateDetailView: View {
         }
     }
     
-    @State private var selectedDate = Date()
     @State private var selctedPicker: PickerKind = .date
     
     @Binding var selectedOption: DestinationSearchOptions
@@ -51,34 +50,11 @@ struct DateDetailView: View {
                 
                 switch selctedPicker {
                 case .date:
-                    VStack(spacing: 0) {
-                        DatePicker(
-                                "Start Date",
-                                selection: $selectedDate,
-                                in: Date()...,
-                                displayedComponents: [.date]
-                            )
-                            .datePickerStyle(.graphical)
-                        Divider()
-                            .padding(.bottom, proxy.size.height / 35)
-                        
-                        // TODO: 슬라이드 버튼으로 수정 예정
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            HStack(spacing: 12) {
-                                BottomAddDateButton(image: nil, title: "정확한 날짜")
-                                BottomAddDateButton(image: "plusminus", title: "1")
-                                BottomAddDateButton(image: "plusminus", title: "2")
-                                BottomAddDateButton(image: "plusminus", title: "3")
-                                BottomAddDateButton(image: "plusminus", title: "3")
-                                BottomAddDateButton(image: "plusminus", title: "7")
-                            }
-                        }
-//                        .padding(.bottom, proxy.size.height / 35)
-                    }
+                    PickerDateView()
                 case .month:
-                    Text("월 뷰")
+                    PickerMonthView()
                 case .flexible:
-                    Text("유연 뷰")
+                    FlexibleView()
                 }
 
                 Spacer()
@@ -136,6 +112,63 @@ extension DateDetailView {
                 Capsule()
                     .stroke(lineWidth: 1.0)
                     .foregroundColor(Color(.systemGray4))
+            }
+        }
+        
+    }
+    
+    struct PickerDateView: View {
+        
+        @State private var selectedDate = Date()
+        
+        var body: some View {
+            GeometryReader { proxy in
+                VStack(spacing: 0) {
+                    DatePicker(
+                            "Start Date",
+                            selection: $selectedDate,
+                            in: Date()...,
+                            displayedComponents: [.date]
+                        )
+                        .datePickerStyle(.graphical)
+                    Divider()
+                        .padding(.bottom, proxy.size.height / 35)
+                    
+                    // TODO: 슬라이드 버튼으로 수정 예정
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 12) {
+                            BottomAddDateButton(image: nil, title: "정확한 날짜")
+                            BottomAddDateButton(image: "plusminus", title: "1")
+                            BottomAddDateButton(image: "plusminus", title: "2")
+                            BottomAddDateButton(image: "plusminus", title: "3")
+                            BottomAddDateButton(image: "plusminus", title: "3")
+                            BottomAddDateButton(image: "plusminus", title: "7")
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    struct PickerMonthView: View {
+        
+        var body: some View {
+            GeometryReader { proxy in
+                VStack(spacing: 0) {
+                    Text("월 뷰")
+                }
+            }
+        }
+        
+    }
+    
+    struct FlexibleView: View {
+        
+        var body: some View {
+            GeometryReader { proxy in
+                VStack(spacing: 0) {
+                    Text("플렉스 뷰")
+                }
             }
         }
         
