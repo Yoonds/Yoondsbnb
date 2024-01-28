@@ -54,6 +54,7 @@ struct DateDetailView: View {
                     PickerDateView()
                 case .month:
                     PickerMonthView()
+                        .padding(.top, 70)
                 case .flexible:
                     FlexibleView()
                 }
@@ -153,12 +154,41 @@ private extension DateDetailView {
     
     struct PickerMonthView: View {
         
+        // 해당변수 위치 이동할지 고민
+        @State var progress: Double = 0.0
+        
         var body: some View {
-            GeometryReader { proxy in
-                VStack(spacing: 0) {
-                    Text("월 뷰")
-                }
+            VStack(spacing: 0) {
+                Circle()
+                    .foregroundColor(.white)
+                    .overlay {
+                        HStack(spacing: 0) {
+                            Text("3")
+                                .font(.largeTitle)
+                            Text("개월")
+                                .bold()
+                        }
+                        Circle()
+                            .stroke(
+                                Color.pink.opacity(0.5),
+                                lineWidth: 50
+                            )
+                        Circle()
+                            .trim(from: 0, to: progress)
+                            .stroke(
+                                Color.pink,
+                                style: StrokeStyle(
+                                    lineWidth: 50,
+                                    lineCap: .round
+                                )
+                            )
+                            .rotationEffect(.degrees(-90))
+                            .animation(.easeOut, value: progress)
+                    }
+                Slider(value: $progress, in: 0...1)
             }
+            .frame(width: 200, height: 200)
+            .padding(25)
         }
         
     }
