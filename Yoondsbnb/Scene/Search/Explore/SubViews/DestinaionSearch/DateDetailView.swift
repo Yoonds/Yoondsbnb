@@ -125,14 +125,13 @@ private extension DateDetailView {
         var body: some View {
             GeometryReader { proxy in
                 VStack(spacing: 0) {
-//                    DatePicker(
-//                            "하하하",
-//                            selection: $selectedDate,
-//                            in: Date()...,
-//                            displayedComponents: [.date]
-//                        )
-//                        .datePickerStyle(.graphical)
-                    CustomDatePicker()
+                    DatePicker(
+                        "Canlendar",
+                        selection: $selectedDate,
+                        in: Date()...,
+                        displayedComponents: [.date]
+                    )
+                    .datePickerStyle(.graphical)
                     Divider()
                         .padding(.bottom, proxy.size.height / 35)
                     
@@ -174,45 +173,6 @@ private extension DateDetailView {
             }
         }
         
-    }
-    
-    // 이해한 후 구현하기
-    struct CustomDatePicker: UIViewControllerRepresentable {
-        
-        final class Coordinator: NSObject {
-            
-            var parent: CustomDatePicker
-            init(parent: CustomDatePicker) {
-                self.parent = parent
-            }
-
-            // Implement UIDatePickerDelegate methods if needed
-        }
-
-        @State var selectedDate: Date = Date()
-        
-        func makeUIViewController(context: Context) -> UIViewController {
-            let viewController = UIViewController()
-            let datePicker = UIDatePicker()
-            datePicker.datePickerMode = .date
-            datePicker.minimumDate = selectedDate
-//            datePicker.addTarget(context.coordinator, action: #selector(dateChanged), for: .valueChanged)
-            viewController.view.addSubview(datePicker)
-
-            return viewController
-        }
-
-        func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
-            // Update UI if needed
-        }
-
-        func makeCoordinator() -> Coordinator {
-            Coordinator(parent: self)
-        }
-
-//        @objc func dateChanged(sender: UIDatePicker) {
-//            selectedDate = sender.date
-//        }
     }
     
 }
