@@ -20,7 +20,7 @@ struct ListingDetailView: View {
 	
 	var body: some View {
 		ScrollView(showsIndicators: false) {
-			ListingImageCarouselView()
+//			ListingImageCarouselView()
 			VStack(alignment: .leading, spacing: 0) {
 				VStack(alignment: .leading, spacing: 0) {
 					Text("한국 서울")

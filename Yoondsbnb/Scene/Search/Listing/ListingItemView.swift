@@ -1,5 +1,5 @@
 //
-//  ListingItem.swift
+//  ListingItemView.swift
 //  Yoondsbnb
 //
 //  Created by YoonDaeSung on 2023/11/05.
@@ -11,8 +11,14 @@ struct ListingItemView: View {
 	
 	var body: some View {
 		VStack(spacing: 8) {
-			
-			ListingImageCarouselView()
+            TabView {
+                ForEach(0...3, id: \.self) { image in
+                    Rectangle()
+                }
+            }
+            .frame(height: 320)
+            .clipShape(RoundedRectangle(cornerRadius: 13))
+            .tabViewStyle(.page)
 			
 			HStack(alignment: .top) {
 				VStack(alignment: .leading) {
@@ -28,7 +34,6 @@ struct ListingItemView: View {
 							.fontWeight(.semibold)
 						Text("/박")
 					}
-					.foregroundColor(.black)
 				}
 				
 				Spacer()
@@ -39,6 +44,7 @@ struct ListingItemView: View {
 				}
 				.foregroundColor(.black)
 			}
+            .font(.footnote)
 		}
         .padding(.horizontal)
 	}

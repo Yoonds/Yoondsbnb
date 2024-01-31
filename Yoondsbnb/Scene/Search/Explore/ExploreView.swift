@@ -21,6 +21,7 @@ struct ExploreView: View {
                             isShowDestinationSearchView.toggle()
                         }
                     }
+                    .padding(.bottom, 20)
                 ScrollView(showsIndicators: false) {
                     LazyVStack(spacing: 32) {
                         ForEach( 0 ... 10, id: \.self) { listing in
