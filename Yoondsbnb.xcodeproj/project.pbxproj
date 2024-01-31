@@ -33,6 +33,7 @@
 		6BCC68112AF7C377003DAC4E /* ListingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCC68102AF7C377003DAC4E /* ListingDetailView.swift */; };
 		6BCC68152AF7C595003DAC4E /* ExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCC68142AF7C595003DAC4E /* ExploreView.swift */; };
 		6BD8BD722B308AD3006C99A8 /* DestinationSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD8BD712B308AD3006C99A8 /* DestinationSearchView.swift */; };
+		6BE53FCB2B6AA63300CA314D /* ExploreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE53FCA2B6AA63300CA314D /* ExploreViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +64,7 @@
 		6BCC68102AF7C377003DAC4E /* ListingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingDetailView.swift; sourceTree = "<group>"; };
 		6BCC68142AF7C595003DAC4E /* ExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreView.swift; sourceTree = "<group>"; };
 		6BD8BD712B308AD3006C99A8 /* DestinationSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationSearchView.swift; sourceTree = "<group>"; };
+		6BE53FCA2B6AA63300CA314D /* ExploreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 		6B45216E2B5FF3D80049FAD9 /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
+				6B71D3AD2AF63393007773A2 /* SearchAndFilterBar.swift */,
 				6B45216F2B5FF40B0049FAD9 /* DestinaionSearch */,
 			);
 			path = SubViews;
@@ -269,7 +272,7 @@
 			isa = PBXGroup;
 			children = (
 				6BCC68142AF7C595003DAC4E /* ExploreView.swift */,
-				6B71D3AD2AF63393007773A2 /* SearchAndFilterBar.swift */,
+				6BE53FCA2B6AA63300CA314D /* ExploreViewModel.swift */,
 				6B45216E2B5FF3D80049FAD9 /* SubViews */,
 			);
 			path = Explore;
@@ -368,6 +371,7 @@
 				6B491A382AF91D2100E6B7C3 /* SeeMoreBottomSheetView.swift in Sources */,
 				6B71D3AC2AE80576007773A2 /* ProfileListItem.swift in Sources */,
 				6BD8BD722B308AD3006C99A8 /* DestinationSearchView.swift in Sources */,
+				6BE53FCB2B6AA63300CA314D /* ExploreViewModel.swift in Sources */,
 				6B71D3AE2AF63393007773A2 /* SearchAndFilterBar.swift in Sources */,
 				6BBD21F32AE1761600B49F41 /* TravelView.swift in Sources */,
 				6B7496E829F5751F00FF7B4A /* SearchView.swift in Sources */,
